@@ -2,46 +2,32 @@
 //  PurchaseCategory.swift
 //  ExpenseMonthly
 //
-//  Created by andrew liauba on 2023-03-11.
+//  Created by andrew liauba on 2023-03-12.
 //
 
-import SwiftUI
+import Foundation
 
-struct PurchaseCategory: View {
+
+class PurchaseCategory: ObservableObject, Hashable {
+    var name:String
+    var id: String
+    @Published var items: [PurchaseItem] = []
     
-    var categoryName: String
+    init(name: String) {
+        self.name = name
+        self.id = UUID().uuidString
+    }
     
-    var body: some View {
-        NavigationLink {
-            Text("Hello \(categoryName)")
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .frame(width: 175, height: 100)
-                    .foregroundColor(.blue)
-                VStack {
-                    Text(categoryName)
-                        .foregroundColor(.white)
-                        .font(.title2.bold())
-                        .padding(.bottom,8)
-                    
-                    Text("$200 this month")
-                        .font(.caption.bold())
-                        .foregroundColor(.white)
-                }
-                    
-            }
-        }
-
-
-        
-            
-            
+    func addPurchaseItem(item: PurchaseItem) {
+        items.append(item)
     }
-}
-
-struct PurchaseCategory_Previews: PreviewProvider {
-    static var previews: some View {
-        PurchaseCategory(categoryName: "Dinners")
+    
+    static func == (lhs: PurchaseCategory, rhs: PurchaseCategory) -> Bool {
+        return lhs.id == rhs.id
     }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
 }

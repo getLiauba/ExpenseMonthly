@@ -9,14 +9,19 @@ import SwiftUI
 
 struct PurchasesView: View {
     
-    var purchaseCategories = ["Food","Clothing","Dates","Education", "Memberships"]
+    @State var showingAddPurchaseCategory = false
+    @StateObject var expenses = Expenses()
+    @ObservedObject var purchaseCategories = PurchaseCategories()
+    
+    
+    //var purchaseCategories = ["Food","Clothing","Dates","Education", "Memberships"]
     
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 180))]) {
-                    ForEach(purchaseCategories, id: \.self){ label in
-                        PurchaseCategory(categoryName: label)
+                    ForEach(purchaseCategories.categories, id: \.self){ category in
+                        PurchaseCategoryView(categoryName: category.name)
                             .padding()
                     }
                 }
@@ -25,10 +30,13 @@ struct PurchasesView: View {
             .navigationBarTitleDisplayMode(.automatic)
             .toolbar {
                 Button {
-                    print("Clicked")
+                    showingAddPurchaseCategory = true
                 } label: {
                     Image(systemName: "plus")
                 }
+            }
+            .sheet(isPresented: $showingAddPurchaseCategory) {
+                AddPurchaseCategoryView(purchaseCatergories: self.purchaseCategories)
             }
         }
         .padding(10)
