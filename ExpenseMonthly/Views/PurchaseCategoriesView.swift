@@ -9,18 +9,18 @@ import SwiftUI
 
 struct PurchaseCategoryView: View {
     
-    var categoryName: String
+    var category: PurchaseCategory
     
     var body: some View {
         NavigationLink {
-            Text("Hello \(categoryName)")
+            PurchaseCategoryListView(purchaseCategory: category)
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 175, height: 100)
                     .foregroundColor(.blue)
                 VStack {
-                    Text(categoryName)
+                    Text("\(category.name)")
                         .foregroundColor(.white)
                         .font(.title2.bold())
                         .padding(.bottom,8)
@@ -36,6 +36,6 @@ struct PurchaseCategoryView: View {
 
 struct PurchaseCategory_Previews: PreviewProvider {
     static var previews: some View {
-        PurchaseCategoryView(categoryName: "Food")
+        PurchaseCategoryView(category: PurchaseCategory(name: "Test"))
     }
 }

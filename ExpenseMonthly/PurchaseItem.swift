@@ -7,6 +7,8 @@
 
 import Foundation
 
-struct PurchaseItem {
+struct PurchaseItem: Identifiable {
+    var id = UUID().uuidString
     var name: String
+    var amount: Double
 }

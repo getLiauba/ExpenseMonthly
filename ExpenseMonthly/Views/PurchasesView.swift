@@ -14,14 +14,12 @@ struct PurchasesView: View {
     @ObservedObject var purchaseCategories = PurchaseCategories()
     
     
-    //var purchaseCategories = ["Food","Clothing","Dates","Education", "Memberships"]
-    
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 180))]) {
                     ForEach(purchaseCategories.categories, id: \.self){ category in
-                        PurchaseCategoryView(categoryName: category.name)
+                        PurchaseCategoryView(category: category)
                             .padding()
                     }
                 }
