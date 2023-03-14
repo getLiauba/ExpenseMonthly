@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AddPurchaseView: View {
     
-    @ObservedObject var expenses: Expenses
+    //@ObservedObject var expenses: Expenses
+    @ObservedObject var categoryPurchase: PurchaseCategory
     @Environment(\.dismiss) var dismiss
     
     @State private var expenseName = ""
@@ -19,7 +20,7 @@ struct AddPurchaseView: View {
     
     
     var body: some View {
-        
+        Section {
             Form {
                 TextField("Expense Name", text: $expenseName)
                 
@@ -28,20 +29,24 @@ struct AddPurchaseView: View {
                 DatePicker("Start Date",selection: $date,displayedComponents: [.date])
                 
             }
-            .navigationTitle("Add New Expense")
-            .toolbar {
-                Button("Save"){
-                    let item = ExpenseItem(name: self.expenseName, amount: self.amount, dueDate: self.date)
-                    expenses.items.append(item)
-                    dismiss()
+            Button {
+                categoryPurchase.items.append(PurchaseItem(name: expenseName, amount: amount))
+                dismiss()
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 20)
+                        .frame(width: 200,height: 50)
+                    Text("SAVE")
+                        .foregroundColor(.white)
                 }
             }
+        }
         
     }
 }
 
 struct AddPurchaseView_Previews: PreviewProvider {
     static var previews: some View {
-        AddPurchaseView(expenses: Expenses())
+        AddPurchaseView(categoryPurchase: PurchaseCategory(name: "Test"))
     }
 }

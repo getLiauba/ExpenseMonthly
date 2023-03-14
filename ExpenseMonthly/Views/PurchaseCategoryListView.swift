@@ -43,7 +43,7 @@ struct PurchaseCategoryListView: View {
                 }
             }
             .sheet(isPresented: $showingAddPurchase) {
-                AddPurchaseView(expenses: Expenses())
+                AddPurchaseView(categoryPurchase: purchaseCategory)
             }
         
 
