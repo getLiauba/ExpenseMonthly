@@ -10,6 +10,7 @@ import SwiftUI
 struct ExpensesView: View {
     
     @StateObject var expenses = Expenses()
+    @State private var isAddExpensePresented = false
     
     var grandientColor = LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
     
@@ -25,11 +26,9 @@ struct ExpensesView: View {
                         .font(.title3.bold())
 
                     Spacer()
-                    Button {
-                        print("Add something")
-                    } label: {
+                    NavigationLink(destination: AddExpenseView()) {
                         ZStack {
-                            grandientColor
+                            Color.purple
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .frame(width: 130,height: 35)
                                 
@@ -60,6 +59,9 @@ struct ExpensesView: View {
         }
         .frame(width: .infinity, height: 370)
         .ignoresSafeArea()
+//        .sheet(isPresented: $isAddExpensePresented) {
+//            AddExpenseView()
+//        }
     }
 }
 

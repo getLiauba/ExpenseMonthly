@@ -18,6 +18,8 @@
 		4D84F8BA29C2A0990074C55D /* PurchasesContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8B829C2A0990074C55D /* PurchasesContainer.xcdatamodeld */; };
 		4D84F8BC29C37D350074C55D /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8BB29C37D350074C55D /* ExpensesView.swift */; };
 		4D84F8BE29C38BFB0074C55D /* ExpensesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */; };
+		4D84F8C029C3B33F0074C55D /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8BF29C3B33F0074C55D /* AddExpenseView.swift */; };
+		4D84F8C229C3CC970074C55D /* AddExpenseNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8C129C3CC970074C55D /* AddExpenseNameView.swift */; };
 		4DCD67BF29BD0A980080337F /* PurchasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67BE29BD0A980080337F /* PurchasesView.swift */; };
 		4DCD67C329BE788D0080337F /* AddPurchaseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67C229BE788D0080337F /* AddPurchaseCategoryView.swift */; };
 		4DCD67C629BE83590080337F /* PurchaseCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67C529BE83590080337F /* PurchaseCategories.swift */; };
@@ -41,6 +43,8 @@
 		4D84F8B929C2A0990074C55D /* PurchasesContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PurchasesContainer.xcdatamodel; sourceTree = "<group>"; };
 		4D84F8BB29C37D350074C55D /* ExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesView.swift; sourceTree = "<group>"; };
 		4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesDisplayView.swift; sourceTree = "<group>"; };
+		4D84F8BF29C3B33F0074C55D /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		4D84F8C129C3CC970074C55D /* AddExpenseNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseNameView.swift; sourceTree = "<group>"; };
 		4DCD67BE29BD0A980080337F /* PurchasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesView.swift; sourceTree = "<group>"; };
 		4DCD67C229BE788D0080337F /* AddPurchaseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseCategoryView.swift; sourceTree = "<group>"; };
 		4DCD67C529BE83590080337F /* PurchaseCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCategories.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				4DCD67C229BE788D0080337F /* AddPurchaseCategoryView.swift */,
 				4D3D76EA29A2B31A002D90A3 /* ContentView.swift */,
 				4D3D76F629A2B816002D90A3 /* AddView.swift */,
+				4D84F8C129C3CC970074C55D /* AddExpenseNameView.swift */,
+				4D84F8BF29C3B33F0074C55D /* AddExpenseView.swift */,
 				4D84F8BB29C37D350074C55D /* ExpensesView.swift */,
 				4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */,
 				4D84F8B829C2A0990074C55D /* PurchasesContainer.xcdatamodeld */,
@@ -199,12 +205,14 @@
 				4DCD67BF29BD0A980080337F /* PurchasesView.swift in Sources */,
 				4D84F8BE29C38BFB0074C55D /* ExpensesDisplayView.swift in Sources */,
 				4DCD67C329BE788D0080337F /* AddPurchaseCategoryView.swift in Sources */,
+				4D84F8C029C3B33F0074C55D /* AddExpenseView.swift in Sources */,
 				4D3D76F729A2B816002D90A3 /* AddView.swift in Sources */,
 				4DCD67C829BE83E10080337F /* PurchaseCategory.swift in Sources */,
 				4D84F8B729C29FAB0074C55D /* CoreDataViewModel.swift in Sources */,
 				4D3D76F929A2BC79002D90A3 /* ExpenseItem.swift in Sources */,
 				4DCD67CE29BE86F00080337F /* PurchaseCategoriesView.swift in Sources */,
 				4DCD67D229BFACA80080337F /* AddPurchaseView.swift in Sources */,
+				4D84F8C229C3CC970074C55D /* AddExpenseNameView.swift in Sources */,
 				4DCD67D629BFB2420080337F /* PurchaseCategoryListView.swift in Sources */,
 				4D84F8BA29C2A0990074C55D /* PurchasesContainer.xcdatamodeld in Sources */,
 			);

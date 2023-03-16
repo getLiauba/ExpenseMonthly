@@ -9,15 +9,18 @@ import SwiftUI
 
 struct ExpensesDisplayView: View {
     var body: some View {
-        ZStack {
-         
-            LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
-            VStack {
-                Spacer()
-                ExpensesView()
+        NavigationView{
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
+                VStack {
+                    Spacer()
+                    ExpensesView()
+                }
             }
+            .ignoresSafeArea()
+            .navigationTitle("Hello Andrew")
+            
         }
-        .ignoresSafeArea()
     }
 }
 
