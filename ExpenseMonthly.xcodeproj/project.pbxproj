@@ -16,6 +16,8 @@
 		4D3D76FB29A2BCD7002D90A3 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D76FA29A2BCD7002D90A3 /* Expenses.swift */; };
 		4D84F8B729C29FAB0074C55D /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8B629C29FAB0074C55D /* CoreDataViewModel.swift */; };
 		4D84F8BA29C2A0990074C55D /* PurchasesContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8B829C2A0990074C55D /* PurchasesContainer.xcdatamodeld */; };
+		4D84F8BC29C37D350074C55D /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8BB29C37D350074C55D /* ExpensesView.swift */; };
+		4D84F8BE29C38BFB0074C55D /* ExpensesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */; };
 		4DCD67BF29BD0A980080337F /* PurchasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67BE29BD0A980080337F /* PurchasesView.swift */; };
 		4DCD67C329BE788D0080337F /* AddPurchaseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67C229BE788D0080337F /* AddPurchaseCategoryView.swift */; };
 		4DCD67C629BE83590080337F /* PurchaseCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67C529BE83590080337F /* PurchaseCategories.swift */; };
@@ -37,6 +39,8 @@
 		4D3D76FA29A2BCD7002D90A3 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 		4D84F8B629C29FAB0074C55D /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		4D84F8B929C2A0990074C55D /* PurchasesContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PurchasesContainer.xcdatamodel; sourceTree = "<group>"; };
+		4D84F8BB29C37D350074C55D /* ExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesView.swift; sourceTree = "<group>"; };
+		4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesDisplayView.swift; sourceTree = "<group>"; };
 		4DCD67BE29BD0A980080337F /* PurchasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesView.swift; sourceTree = "<group>"; };
 		4DCD67C229BE788D0080337F /* AddPurchaseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseCategoryView.swift; sourceTree = "<group>"; };
 		4DCD67C529BE83590080337F /* PurchaseCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCategories.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				4DCD67C229BE788D0080337F /* AddPurchaseCategoryView.swift */,
 				4D3D76EA29A2B31A002D90A3 /* ContentView.swift */,
 				4D3D76F629A2B816002D90A3 /* AddView.swift */,
+				4D84F8BB29C37D350074C55D /* ExpensesView.swift */,
+				4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */,
 				4D84F8B829C2A0990074C55D /* PurchasesContainer.xcdatamodeld */,
 			);
 			path = Views;
@@ -187,9 +193,11 @@
 				4DCD67CC29BE861D0080337F /* PurchaseItem.swift in Sources */,
 				4D3D76FB29A2BCD7002D90A3 /* Expenses.swift in Sources */,
 				4D3D76EB29A2B31A002D90A3 /* ContentView.swift in Sources */,
+				4D84F8BC29C37D350074C55D /* ExpensesView.swift in Sources */,
 				4DCD67C629BE83590080337F /* PurchaseCategories.swift in Sources */,
 				4D3D76E929A2B31A002D90A3 /* ExpenseMonthlyApp.swift in Sources */,
 				4DCD67BF29BD0A980080337F /* PurchasesView.swift in Sources */,
+				4D84F8BE29C38BFB0074C55D /* ExpensesDisplayView.swift in Sources */,
 				4DCD67C329BE788D0080337F /* AddPurchaseCategoryView.swift in Sources */,
 				4D3D76F729A2B816002D90A3 /* AddView.swift in Sources */,
 				4DCD67C829BE83E10080337F /* PurchaseCategory.swift in Sources */,
