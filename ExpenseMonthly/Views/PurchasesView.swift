@@ -11,6 +11,7 @@ struct PurchasesView: View {
     
     @State var showingAddPurchaseCategory = false
     @StateObject var expenses = Expenses()
+    
     @ObservedObject var purchaseCategories = PurchaseCategories()
     
     

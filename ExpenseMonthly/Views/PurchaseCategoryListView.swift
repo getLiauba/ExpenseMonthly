@@ -12,27 +12,29 @@ struct PurchaseCategoryListView: View {
     @State var showingAddPurchase = false
     
     var purchaseCategory: PurchaseCategory
+    @StateObject var vm = CoreDataViewModel()
 
     
     var body: some View {
             List {
-                ForEach(purchaseCategory.items) { item in
-                    VStack {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                            }
-                            Spacer()
-                            Text(item.amount, format: .currency(code: "USD"))
-                        }
-                        .padding(1)
-//                        Text("Due in \(item.daysUntilDue) day(s)")
-//                            .font(.footnote.bold())
-//                            .foregroundColor(.red)
-                    }
-                    
+                
+                ForEach(vm.savedEntities){ entity in
+                    Text(entity.name ?? "No Name")
                 }
+                
+//                ForEach(purchaseCategory.items) { item in
+//                    VStack {
+//                        HStack {
+//                            VStack(alignment: .leading) {
+//                                Text(item.name)
+//                                    .font(.headline)
+//                            }
+//                            Spacer()
+//                            Text(item.amount, format: .currency(code: "USD"))
+//                        }
+//                        .padding(1)
+//                    }
+//                }
             }
             .navigationTitle("Monthly Expenses")
             .toolbar {

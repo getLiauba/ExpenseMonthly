@@ -11,7 +11,9 @@ import SwiftUI
 struct ExpenseMonthlyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PurchasesView()
+            //ContentView()
+            //AddPurchaseView(categoryPurchase: PurchaseCategory(name: "Test"))
         }
     }
 }

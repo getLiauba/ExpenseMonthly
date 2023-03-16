@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddPurchaseView: View {
     
+    @StateObject var vm = CoreDataViewModel()
+    
     //@ObservedObject var expenses: Expenses
     @ObservedObject var categoryPurchase: PurchaseCategory
     @Environment(\.dismiss) var dismiss
@@ -30,6 +32,7 @@ struct AddPurchaseView: View {
                 
             }
             Button {
+                vm.addPurchase(name: expenseName)
                 categoryPurchase.items.append(PurchaseItem(name: expenseName, amount: amount))
                 dismiss()
             } label: {
