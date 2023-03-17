@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct AddExpenseView: View {
-    @Environment(\.dismiss) var dismiss
+    @StateObject var vm:CoreDataViewModel
+    @Binding var isActive: Bool
     
+    @Environment(\.dismiss) var dismiss
     var grandientColor = LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
     
     @State var amount = ""
@@ -21,7 +23,8 @@ struct AddExpenseView: View {
                     .font(.title2)
                     .padding()
                     .onTapGesture {
-                        dismiss()
+                        isActive = false
+                        //dismiss()
                     }
                     Spacer()
                 Text("Enter Amount")
@@ -42,7 +45,7 @@ struct AddExpenseView: View {
             NumberPad(amount: $amount)
             
             NavigationLink {
-                AddExpenseNameView(expensePrice: self.amount)
+                AddExpenseNameView(vm: vm, expensePrice: amount, isActive: $isActive)
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
@@ -105,8 +108,8 @@ struct Number:View {
     }
 }
 
-struct AddExpenseView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddExpenseView()
-    }
-}
+//struct AddExpenseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddExpenseView(vm: CoreDataViewModel(),isActive: $isActive)
+//    }
+//}

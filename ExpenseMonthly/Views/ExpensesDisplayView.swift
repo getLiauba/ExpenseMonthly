@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ExpensesDisplayView: View {
+    @StateObject var vm = CoreDataViewModel()
     var body: some View {
         NavigationView{
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
                 VStack {
                     Spacer()
-                    ExpensesView()
+                    ExpensesView(vm: vm)
                 }
             }
-            .ignoresSafeArea()
             .navigationTitle("Hello Andrew")
+            .ignoresSafeArea()
             
         }
     }

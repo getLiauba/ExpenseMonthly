@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ExpensesView: View {
-    
-    @StateObject var expenses = Expenses()
+    @State private var showSecondView = false
+    @StateObject var vm:CoreDataViewModel
+    @FetchRequest(entity: ExpenseEntity.entity(), sortDescriptors: []) var savedEntities: FetchedResults<ExpenseEntity>
+
     @State private var isAddExpensePresented = false
     
     var grandientColor = LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
@@ -26,7 +28,7 @@ struct ExpensesView: View {
                         .font(.title3.bold())
 
                     Spacer()
-                    NavigationLink(destination: AddExpenseView()) {
+                    NavigationLink(destination: AddExpenseView(vm: vm, isActive: $showSecondView),isActive: $showSecondView) {
                         ZStack {
                             Color.purple
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -45,12 +47,16 @@ struct ExpensesView: View {
                     
                     .padding(.top)
                 ScrollView {
-                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
-                    Expense(expenseName: "Apple Music", expenseDate: "10", expensePrice: "4.99")
-                    Expense(expenseName: "Spotify", expenseDate: "10", expensePrice: "9.99")
-                    Expense(expenseName: "Phone Bill", expenseDate: "18", expensePrice: "50.99")
-                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
-                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
+                    ForEach(vm.savedEntities) { entity in
+                        Expense(expenseName: entity.name!, expenseDate: "19", expensePrice: entity.price!)
+                    }
+                    .onDelete(perform: vm.deletePurchase)
+//                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
+//                    Expense(expenseName: "Apple Music", expenseDate: "10", expensePrice: "4.99")
+//                    Expense(expenseName: "Spotify", expenseDate: "10", expensePrice: "9.99")
+//                    Expense(expenseName: "Phone Bill", expenseDate: "18", expensePrice: "50.99")
+//                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
+//                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
 
                 }
                 .padding(.leading)
@@ -100,6 +106,6 @@ struct Expense: View {
 
 struct ExpensesView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpensesView()
+        ExpensesView(vm: CoreDataViewModel())
     }
 }

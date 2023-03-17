@@ -12,7 +12,7 @@ import Foundation
 class CoreDataViewModel: ObservableObject {
     
     let container: NSPersistentContainer
-    @Published var savedEntities: [PurchaseEntity] = []
+    @Published var savedEntities: [ExpenseEntity] = []
     
     init(){
         container = NSPersistentContainer(name: "PurchasesContainer")
@@ -27,7 +27,7 @@ class CoreDataViewModel: ObservableObject {
     }
     
     func fetchPurchases(){
-        let request = NSFetchRequest<PurchaseEntity>(entityName: "PurchaseEntity")
+        let request = NSFetchRequest<ExpenseEntity>(entityName: "ExpenseEntity")
         
         do {
             savedEntities = try container.viewContext.fetch(request)
@@ -37,9 +37,17 @@ class CoreDataViewModel: ObservableObject {
         }
     }
     
-    func addPurchase(name: String) {
-        let newPurchase = PurchaseEntity(context: container.viewContext)
-        newPurchase.name = name
+    func addPurchase(name: String, price: String) {
+        let newExpense = ExpenseEntity(context: container.viewContext)
+        newExpense.name = name
+        newExpense.price = price
+        saveData()
+    }
+    
+    func deletePurchase(indexSet: IndexSet) {
+        guard let index = indexSet.first else {return}
+        let entity = savedEntities[index]
+        container.viewContext.delete(entity)
         saveData()
     }
     

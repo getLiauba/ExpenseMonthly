@@ -20,6 +20,7 @@
 		4D84F8BE29C38BFB0074C55D /* ExpensesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */; };
 		4D84F8C029C3B33F0074C55D /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8BF29C3B33F0074C55D /* AddExpenseView.swift */; };
 		4D84F8C229C3CC970074C55D /* AddExpenseNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8C129C3CC970074C55D /* AddExpenseNameView.swift */; };
+		4D84F8E529C4F56A0074C55D /* GPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84F8E429C4F56A0074C55D /* GPTView.swift */; };
 		4DCD67BF29BD0A980080337F /* PurchasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67BE29BD0A980080337F /* PurchasesView.swift */; };
 		4DCD67C329BE788D0080337F /* AddPurchaseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67C229BE788D0080337F /* AddPurchaseCategoryView.swift */; };
 		4DCD67C629BE83590080337F /* PurchaseCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD67C529BE83590080337F /* PurchaseCategories.swift */; };
@@ -45,6 +46,7 @@
 		4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesDisplayView.swift; sourceTree = "<group>"; };
 		4D84F8BF29C3B33F0074C55D /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		4D84F8C129C3CC970074C55D /* AddExpenseNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseNameView.swift; sourceTree = "<group>"; };
+		4D84F8E429C4F56A0074C55D /* GPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTView.swift; sourceTree = "<group>"; };
 		4DCD67BE29BD0A980080337F /* PurchasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesView.swift; sourceTree = "<group>"; };
 		4DCD67C229BE788D0080337F /* AddPurchaseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseCategoryView.swift; sourceTree = "<group>"; };
 		4DCD67C529BE83590080337F /* PurchaseCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCategories.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				4D84F8BB29C37D350074C55D /* ExpensesView.swift */,
 				4D84F8BD29C38BFB0074C55D /* ExpensesDisplayView.swift */,
 				4D84F8B829C2A0990074C55D /* PurchasesContainer.xcdatamodeld */,
+				4D84F8E429C4F56A0074C55D /* GPTView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				4D84F8BE29C38BFB0074C55D /* ExpensesDisplayView.swift in Sources */,
 				4DCD67C329BE788D0080337F /* AddPurchaseCategoryView.swift in Sources */,
 				4D84F8C029C3B33F0074C55D /* AddExpenseView.swift in Sources */,
+				4D84F8E529C4F56A0074C55D /* GPTView.swift in Sources */,
 				4D3D76F729A2B816002D90A3 /* AddView.swift in Sources */,
 				4DCD67C829BE83E10080337F /* PurchaseCategory.swift in Sources */,
 				4D84F8B729C29FAB0074C55D /* CoreDataViewModel.swift in Sources */,
