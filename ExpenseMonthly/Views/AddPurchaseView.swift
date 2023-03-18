@@ -32,7 +32,7 @@ struct AddPurchaseView: View {
                 
             }
             Button {
-                vm.addPurchase(name: expenseName,price: "99")
+                vm.addPurchase(name: expenseName,price: "99",date: Date.now)
                 categoryPurchase.items.append(PurchaseItem(name: expenseName, amount: amount))
                 dismiss()
             } label: {

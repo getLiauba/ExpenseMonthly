@@ -17,9 +17,10 @@ struct ExpensesView: View {
     var grandientColor = LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
     
     var body: some View {
-        //Spacer()
+        
         
         ZStack () {
+            grandientColor
             RoundedRectangle(cornerRadius: 40)
                 .foregroundColor(.white)
             VStack {
@@ -44,38 +45,47 @@ struct ExpensesView: View {
                 }
                 .padding(.leading,25)
                 .padding(.top)
-                    
-                    .padding(.top)
+                
+                
                 ScrollView {
                     ForEach(vm.savedEntities) { entity in
-                        Expense(expenseName: entity.name!, expenseDate: "19", expensePrice: entity.price!)
+                        Expense(expenseName: entity.name!, expenseDate: "19", expensePrice: entity.price!, expenseDate2: entity.date ?? Date.now)
                     }
                     .onDelete(perform: vm.deletePurchase)
-//                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
-//                    Expense(expenseName: "Apple Music", expenseDate: "10", expensePrice: "4.99")
-//                    Expense(expenseName: "Spotify", expenseDate: "10", expensePrice: "9.99")
-//                    Expense(expenseName: "Phone Bill", expenseDate: "18", expensePrice: "50.99")
-//                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
-//                    Expense(expenseName: "Netflix", expenseDate: "16", expensePrice: "15.99")
-
                 }
                 .padding(.leading)
             }
 
         }
-        .frame(width: .infinity, height: 370)
-        .ignoresSafeArea()
-//        .sheet(isPresented: $isAddExpensePresented) {
-//            AddExpenseView()
-//        }
+        .frame(width: .infinity, height: 360)
+        
+        //.ignoresSafeArea()
     }
 }
+
+struct MiniDate: View {
+    let date = Date.now
+    let components = Calendar.current.dateComponents([.month,.day], from: Date.now)
+    var body: some View {
+        VStack {
+            Text(Date.now,format: .dateTime.month())
+                .font(.callout)
+                .foregroundColor(.gray)
+            Text(Date.now,format: .dateTime.day())
+                .font(.headline)
+                .fontWeight(.heavy)
+            
+        }
+    }
+}
+
 
 struct Expense: View {
     
     @State var expenseName:String
     @State var expenseDate:String
     @State var expensePrice:String
+    @State var expenseDate2:Date
     
     var body: some View {
         VStack {
@@ -85,16 +95,24 @@ struct Expense: View {
                     .foregroundColor(.white)
                     .padding(4)
                 HStack {
-                    Text(expenseDate)
-                        .font(.subheadline.bold())
+//                    Text(expenseDate)
+//                        .font(.subheadline.bold())
+                    MiniDate()
                     Spacer()
-                    Text(expenseName)
-                        .font(.subheadline.bold())
+                    VStack {
+                        Text(expenseName)
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .padding(.top,10)
+                        Text(expenseDate2,format: .dateTime.day())
+                    }
                     Spacer()
-                    Text(expensePrice)
-                        .font(.subheadline.bold())
+                    Text("$\(expensePrice)")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .padding(.trailing)
                 }
-                .padding(30)
+                .padding(10)
 
             }
             RoundedRectangle(cornerRadius: 1)

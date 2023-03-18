@@ -15,6 +15,8 @@ struct AddExpenseNameView: View {
     @Binding var isActive: Bool
 
     @State var expenseName = ""
+    @State var expenseDate = Date.now
+    
     @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
     
@@ -37,11 +39,12 @@ struct AddExpenseNameView: View {
             
             TextField("Expense Name", text: $expenseName)
                 .padding()
+            DatePicker("Test", selection: $expenseDate)
             
             
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .frame(width: .infinity,height: 60)
+                    .frame(width: .infinity,height: 20)
                     .foregroundColor(.purple)
                     .padding(.horizontal)
                 
@@ -50,7 +53,7 @@ struct AddExpenseNameView: View {
                     .foregroundColor(.white)
             }
             .onTapGesture {
-                vm.addPurchase(name: expenseName, price: expensePrice)
+                vm.addPurchase(name: expenseName, price: expensePrice, date: expenseDate)
                 vm.saveData()
                 isActive = false
             }

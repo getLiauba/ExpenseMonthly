@@ -37,10 +37,41 @@ class CoreDataViewModel: ObservableObject {
         }
     }
     
-    func addPurchase(name: String, price: String) {
+    func getTrailingMonths() {
+        // This function will get the past 6 months and return it into an array
+    }
+
+    
+    func getTrailingMonthTotals() -> [CGFloat] {
+        let calendar = Calendar.current
+        var trailingMonthTotals: [CGFloat] = []
+        
+        for i in 0..<6 {
+            guard let month = calendar.date(byAdding: .month, value: -i, to: Date()) else {
+                continue
+            }
+            
+            let purchases = savedEntities.filter {
+                let purchaseMonth = calendar.component(.month, from: $0.date ?? Date.now)
+                let purchaseYear = calendar.component(.year, from: $0.date ?? Date.now)
+                let targetMonth = calendar.component(.month, from: month)
+                let targetYear = calendar.component(.year, from: month)
+                return purchaseMonth == targetMonth && purchaseYear == targetYear
+            }
+            
+            let totalSpend = purchases.reduce(0.0) { $0 + Double($1.price!)! }
+            trailingMonthTotals.append(CGFloat(totalSpend))
+        }
+        
+        return trailingMonthTotals.reversed()
+    }
+    
+    
+    func addPurchase(name: String, price: String,date: Date) {
         let newExpense = ExpenseEntity(context: container.viewContext)
         newExpense.name = name
         newExpense.price = price
+        newExpense.date = date
         saveData()
     }
     
@@ -60,5 +91,4 @@ class CoreDataViewModel: ObservableObject {
             print("Error saving. \(error)")
         }
     }
-    
 }
