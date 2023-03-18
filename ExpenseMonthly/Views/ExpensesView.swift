@@ -20,7 +20,7 @@ struct ExpensesView: View {
         
         
         ZStack () {
-            grandientColor
+            //grandientColor
             RoundedRectangle(cornerRadius: 40)
                 .foregroundColor(.white)
             VStack {

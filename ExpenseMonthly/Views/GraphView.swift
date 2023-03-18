@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GraphView: View {
     
+    @StateObject var vm: CoreDataViewModel
     @State var barHeights: [CGFloat]
     
     var body: some View {
@@ -25,6 +26,9 @@ struct GraphView: View {
                 Spacer()
             }
             .ignoresSafeArea()
+        }
+        .onAppear() {
+            barHeights = vm.getTrailingMonthTotals()
         }
     }
 }
@@ -63,6 +67,6 @@ struct GraphBar: View {
 struct GraphView_Previews: PreviewProvider {
     static var barHeights: [CGFloat] = [20, 50, 75, 120, 175, 200]
     static var previews: some View {
-        GraphView(barHeights: barHeights)
+        GraphView(vm: CoreDataViewModel(), barHeights: barHeights)
     }
 }

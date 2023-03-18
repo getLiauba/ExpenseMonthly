@@ -18,7 +18,7 @@ struct ExpensesDisplayView: View {
                 VStack{
                     Spacer()
                     GeometryReader { geo in
-                        GraphView(barHeights: barHeights)
+                        GraphView(vm: vm, barHeights: barHeights)
                             .frame(width: .infinity, height: geo.size.height * 1.0)
                     }
                     ExpensesView(vm: vm)
