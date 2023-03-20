@@ -13,13 +13,12 @@ struct GraphView: View {
     @State var barHeights: [CGFloat]
     
     var body: some View {
-        
         GeometryReader { geometry in
             VStack {
                 Spacer()
                 HStack {
                     ForEach(barHeights.indices) { index in
-                        GraphBar(barHeight: $barHeights[index])
+                        GraphBar(barHeight: $barHeights[index], month: getMonthLabel(5 - index))
                     }
                 }
                 .padding(.leading)
@@ -31,12 +30,21 @@ struct GraphView: View {
             barHeights = vm.getTrailingMonthTotals()
         }
     }
+    
+    func getMonthLabel(_ index: Int) -> String {
+        let calendar = Calendar.current
+        let date = calendar.date(byAdding: .month, value: -index, to: Date())!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: date)
+    }
 }
 
 struct GraphBar: View {
     
     @Binding var barHeight: CGFloat
     @State var barHeightStart = 0.0
+    var month: String
     
     var body: some View {
         VStack {
@@ -51,11 +59,11 @@ struct GraphBar: View {
                     .foregroundColor(.green)
                     .opacity(0.6)
                     .onAppear() {
-                        withAnimation(.linear(duration: 0.75)) {
+                        withAnimation(.linear(duration: 1.0)) {
                             barHeightStart = barHeight
                         }
                     }
-                Text("Mar")
+                Text(month)
                     .font(.caption)
                     .fontWeight(.heavy)
             }

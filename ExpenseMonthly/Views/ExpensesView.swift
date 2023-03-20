@@ -16,9 +16,8 @@ struct ExpensesView: View {
     
     var grandientColor = LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
     
+    
     var body: some View {
-        
-        
         ZStack () {
             //grandientColor
             RoundedRectangle(cornerRadius: 40)
@@ -58,9 +57,9 @@ struct ExpensesView: View {
 
         }
         .frame(width: .infinity, height: 360)
-        
         //.ignoresSafeArea()
     }
+    
 }
 
 struct MiniDate: View {

@@ -30,7 +30,7 @@ struct ExpensesDisplayView: View {
             
         }
         .onAppear(){
-
+            print("On appear called")
         }
     }
 }
