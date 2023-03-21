@@ -41,6 +41,8 @@ struct AddExpenseNameView: View {
                 .padding()
             DatePicker("Test", selection: $expenseDate)
             
+            CalendarView()
+            
             
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
