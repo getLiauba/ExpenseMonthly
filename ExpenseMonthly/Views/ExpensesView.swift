@@ -32,7 +32,7 @@ struct ExpensesView: View {
                         ZStack {
                             Color.purple
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .frame(width: 130,height: 35)
+                                .frame(width: 150,height: 35)
                                 
                             Text("Add Expense")
                                 .font(.title3.bold())
@@ -103,7 +103,7 @@ struct Expense: View {
                             .font(.headline)
                             .fontWeight(.bold)
                             .padding(.top,10)
-                        Text(expenseDate2,format: .dateTime.day())
+                        //Text(expenseDate2,format: .dateTime.day())
                     }
                     Spacer()
                     Text("$\(expensePrice)")
