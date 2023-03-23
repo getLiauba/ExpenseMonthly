@@ -18,7 +18,7 @@ struct GraphView: View {
             VStack {
                 Spacer()
                 HStack {
-                    ForEach(barHeights.indices) { index in
+                    ForEach(0..<6) { index in
                         GraphBar(barHeight: $barHeights[index], month: getMonthLabel(5 - index),maxHeight: getMaxHeight(barHeights: barHeights), minHeight: getMinHeight(barHeights: barHeights))
                     }
                 }
@@ -72,7 +72,7 @@ struct GraphBar: View {
                         .fontWeight(.heavy)
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 20, height: barHeightStart)
-                        .padding()
+                        //.padding()
                         .foregroundColor(.green)
                         .opacity(0.6)
                         .onAppear() {

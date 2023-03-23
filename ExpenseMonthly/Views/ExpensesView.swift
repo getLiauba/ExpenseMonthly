@@ -38,7 +38,6 @@ struct ExpensesView: View {
                                 .font(.title3.bold())
                                 .foregroundColor(.white)
                         }
-                        
                     }
                     .padding(.trailing)
                 }
@@ -49,6 +48,7 @@ struct ExpensesView: View {
                 ScrollView {
                     ForEach(vm.savedEntities) { entity in
                         Expense(expenseName: entity.name!, expenseDate: "19", expensePrice: entity.price!, expenseDate2: entity.date ?? Date.now)
+                            .foregroundColor(.black)
                     }
                     .onDelete(perform: vm.deletePurchase)
                 }
@@ -87,39 +87,57 @@ struct Expense: View {
     @State var expenseDate2:Date
     
     var body: some View {
-        VStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 1)
-                    .frame(width: 375,height: 55)
-                    .foregroundColor(.white)
-                    .padding(4)
-                HStack {
-//                    Text(expenseDate)
-//                        .font(.subheadline.bold())
-                    MiniDate()
-                    Spacer()
-                    VStack {
-                        Text(expenseName)
+        NavigationLink(destination: ExpenseDetailsView(name: expenseName, date: expenseDate2, price: expensePrice)) {
+            VStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 1)
+                        .frame(width: 375,height: 55)
+                        .foregroundColor(.white)
+                        .padding(4)
+                    HStack {
+                        MiniDate()
+                        Spacer()
+                        VStack {
+                            Text(expenseName)
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .padding(.top,10)
+                        }
+                        Spacer()
+                        Text("$\(expensePrice)")
                             .font(.headline)
                             .fontWeight(.bold)
-                            .padding(.top,10)
-                        //Text(expenseDate2,format: .dateTime.day())
+                            .padding(.trailing)
                     }
-                    Spacer()
-                    Text("$\(expensePrice)")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .padding(.trailing)
-                }
-                .padding(10)
+                    .padding(10)
 
+                }
+                RoundedRectangle(cornerRadius: 1)
+                    .frame(width: .infinity,height: 1)
+                    .foregroundColor(.gray)
             }
-            RoundedRectangle(cornerRadius: 1)
-                .frame(width: .infinity,height: 1)
-                .foregroundColor(.gray)
         }
     }
 }
+
+
+struct ExpenseDetailsView: View {
+    
+    let name: String
+    let date: Date
+    let price: String
+    
+    var body: some View {
+        VStack {
+            Text(name)
+                .font(.title)
+                .fontWeight(.bold)
+                .padding()
+            Text("\(date)")
+        }
+    }
+}
+
 
 struct ExpensesView_Previews: PreviewProvider {
     static var previews: some View {
