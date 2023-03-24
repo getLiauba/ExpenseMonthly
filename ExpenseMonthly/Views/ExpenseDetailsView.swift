@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ExpenseDetailsView: View {
     
-    @State var name: String
     
+    @Binding var name: String
     let date: Date
-    @State var price: String
-    @State var expenseName = ""
-    @StateObject var vm:CoreDataViewModel
+    @Binding var price: String
+    @StateObject var vm: CoreDataViewModel
+    let id: String
+    @Environment(\.dismiss) var dismiss
+    
     
     var body: some View {
         VStack {
@@ -36,31 +38,36 @@ struct ExpenseDetailsView: View {
                     .frame(width: .infinity,height: 50)
                     .foregroundColor(.purple)
                     .padding(.horizontal)
+                    .onTapGesture {
+                        dismiss()
+                        vm.updatePurchase(id: id, name: $name.wrappedValue, price: $price.wrappedValue, date: date)
+                    }
                 
                 Text("Save")
                     .font(.title3.bold())
                     .foregroundColor(.white)
             }
             .padding(.top,30)
-            .onTapGesture {
 
-            }
         }
         .toolbar {
             Image(systemName: "trash.slash")
                 .foregroundColor(.red)
                 .onTapGesture {
-                    vm.deletePurchaseByDate(date: self.date)
+                    vm.deletePurchaseById(id: self.id)
                 }
         }
         .navigationTitle(self.name)
-    }
-}
-
-struct ExpenseDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ExpenseDetailsView(name: "Test", date: Date.now, price: "24.99",vm: CoreDataViewModel())
+        .onDisappear {
+            vm.fetchPurchases()
         }
     }
 }
+
+//struct ExpenseDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            ExpenseDetailsView(name: "Test", date: Date.now, price: "24.99",vm: CoreDataViewModel(),id: UUID().uuidString)
+//        }
+//    }
+//}

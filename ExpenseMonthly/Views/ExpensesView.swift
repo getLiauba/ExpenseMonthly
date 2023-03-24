@@ -47,7 +47,7 @@ struct ExpensesView: View {
                 
                 ScrollView {
                     ForEach(vm.savedEntities) { entity in
-                        Expense(expenseName: entity.name!, expenseDate: "19", expensePrice: entity.price!, expenseDate2: entity.date ?? Date.now, vm: self.vm)
+                        Expense(expenseName: entity.name!, expenseDate: "19", expensePrice: entity.price!, expenseDate2: entity.date ?? Date.now, vm: self.vm, id: entity.id ?? "")
                             .foregroundColor(.black)
                     }
                     .onDelete(perform: vm.deletePurchase)
@@ -73,7 +73,6 @@ struct MiniDate: View {
             Text(Date.now,format: .dateTime.day())
                 .font(.headline)
                 .fontWeight(.heavy)
-            
         }
     }
 }
@@ -86,9 +85,10 @@ struct Expense: View {
     @State var expensePrice:String
     @State var expenseDate2:Date
     @StateObject var vm:CoreDataViewModel
+    @State var id:String
     
     var body: some View {
-        NavigationLink(destination: ExpenseDetailsView(name: expenseName, date: expenseDate2, price: expensePrice,vm: self.vm)) {
+        NavigationLink(destination: ExpenseDetailsView(name: $expenseName, date: expenseDate2, price: $expensePrice,vm: self.vm,id: id)) {
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 1)
@@ -120,10 +120,6 @@ struct Expense: View {
         }
     }
 }
-
-
-
-
 
 struct ExpensesView_Previews: PreviewProvider {
     static var previews: some View {

@@ -73,6 +73,7 @@ class CoreDataViewModel: ObservableObject {
         newExpense.name = name
         newExpense.price = price
         newExpense.date = date
+        newExpense.id = UUID().uuidString
         saveData()
     }
     
@@ -83,12 +84,43 @@ class CoreDataViewModel: ObservableObject {
         saveData()
     }
     
+    func deletePurchaseById(id: String) {
+        let purchases = savedEntities.filter { $0.id == id }
+        guard let purchase = purchases.first else { return }
+        container.viewContext.delete(purchase)
+        saveData()
+        fetchPurchases()
+    }
+    
     func deletePurchaseByDate(date: Date) {
         let purchases = savedEntities.filter { $0.date == date }
         guard let purchase = purchases.first else { return }
         container.viewContext.delete(purchase)
         saveData()
         fetchPurchases()
+    }
+    
+    func updatePurchase(id:String, name: String, price: String, date: Date) {
+        print("Atttempting to updat eexpense")
+        let expense: ExpenseEntity? = fetchPurchaseById(id: id)
+        expense?.name = name
+        expense?.price = price
+        expense?.date = date
+        saveData()
+        fetchPurchases()
+    }
+    
+    func fetchPurchaseById(id: String) -> ExpenseEntity? {
+        print("fetching expense")
+        let request = NSFetchRequest<ExpenseEntity>(entityName: "ExpenseEntity")
+        request.predicate = NSPredicate(format: "id = %@", id)
+        do {
+            let result = try container.viewContext.fetch(request)
+            return result.first
+        } catch {
+            print("Error fetching purchase with id \(id): \(error)")
+            return nil
+        }
     }
     
     func sortPurchasesByDate() {

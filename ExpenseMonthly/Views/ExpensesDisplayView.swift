@@ -27,13 +27,20 @@ struct ExpensesDisplayView: View {
             .navigationTitle("Hello Andrew")
             .ignoresSafeArea()
             .background(LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading))
+            .onAppear(){
+                vm.fetchPurchases()
+                print("On appear called")
+            }
             
         }
         .onAppear(){
-            print("On appear called")
+            
         }
     }
 }
+
+
+
 struct ExpensesDisplayView_Previews: PreviewProvider {
     static var previews: some View {
         ExpensesDisplayView()
