@@ -121,22 +121,7 @@ struct Expense: View {
 }
 
 
-struct ExpenseDetailsView: View {
-    
-    let name: String
-    let date: Date
-    let price: String
-    
-    var body: some View {
-        VStack {
-            Text(name)
-                .font(.title)
-                .fontWeight(.bold)
-                .padding()
-            Text("\(date)")
-        }
-    }
-}
+
 
 
 struct ExpensesView_Previews: PreviewProvider {

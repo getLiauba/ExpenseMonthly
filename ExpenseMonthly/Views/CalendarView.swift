@@ -38,6 +38,7 @@ struct CalendarView: View {
                     }) {
                         Image(systemName: "arrowtriangle.left.fill")
                             .font(.title)
+                            .foregroundColor(.purple)
                     }
                     Spacer()
                     Text(calendar.monthSymbols[calendar.component(.month, from: selectedDate) - 1])
@@ -48,6 +49,7 @@ struct CalendarView: View {
                     }) {
                         Image(systemName: "arrowtriangle.right.fill")
                             .font(.title)
+                            .foregroundColor(.purple)
                     }
                 }
                 .padding(.horizontal)
@@ -63,7 +65,7 @@ struct CalendarView: View {
                             Text("\(calendar.component(.day, from: day))")
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .foregroundColor(isSelectedDay(day) ? .white : .primary)
-                                .background(isSelectedDay(day) ? Color.blue : Color.clear)
+                                .background(isSelectedDay(day) ? Color.purple : Color.clear)
                                 .clipShape(Circle())
                                 .padding(.vertical)
                         }
