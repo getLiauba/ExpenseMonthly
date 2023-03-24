@@ -14,6 +14,7 @@ struct ExpenseDetailsView: View {
     let date: Date
     @State var price: String
     @State var expenseName = ""
+    @StateObject var vm:CoreDataViewModel
     
     var body: some View {
         VStack {
@@ -48,6 +49,9 @@ struct ExpenseDetailsView: View {
         .toolbar {
             Image(systemName: "trash.slash")
                 .foregroundColor(.red)
+                .onTapGesture {
+                    vm.deletePurchaseByDate(date: self.date)
+                }
         }
         .navigationTitle(self.name)
     }
@@ -56,7 +60,7 @@ struct ExpenseDetailsView: View {
 struct ExpenseDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ExpenseDetailsView(name: "Test", date: Date.now, price: "24.99")
+            ExpenseDetailsView(name: "Test", date: Date.now, price: "24.99",vm: CoreDataViewModel())
         }
     }
 }

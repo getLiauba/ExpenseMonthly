@@ -31,6 +31,7 @@ class CoreDataViewModel: ObservableObject {
         
         do {
             savedEntities = try container.viewContext.fetch(request)
+            sortPurchasesByDate()
 
         } catch let error{
             print("Error fetching. \(error)")
@@ -80,6 +81,18 @@ class CoreDataViewModel: ObservableObject {
         let entity = savedEntities[index]
         container.viewContext.delete(entity)
         saveData()
+    }
+    
+    func deletePurchaseByDate(date: Date) {
+        let purchases = savedEntities.filter { $0.date == date }
+        guard let purchase = purchases.first else { return }
+        container.viewContext.delete(purchase)
+        saveData()
+        fetchPurchases()
+    }
+    
+    func sortPurchasesByDate() {
+        savedEntities.sort { $0.date ?? Date.distantPast > $1.date ?? Date.distantPast }
     }
     
     func saveData() {
