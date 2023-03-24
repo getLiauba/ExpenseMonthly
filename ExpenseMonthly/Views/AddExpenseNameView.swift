@@ -15,7 +15,7 @@ struct AddExpenseNameView: View {
     @Binding var isActive: Bool
 
     @State var expenseName = ""
-    @State var expenseDate = Date.now
+    @Binding var expenseDate:Date
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
@@ -39,9 +39,8 @@ struct AddExpenseNameView: View {
             
             TextField("Expense Name", text: $expenseName)
                 .padding()
-            DatePicker("Test", selection: $expenseDate)
             
-            CalendarView()
+            CalendarView(selectedDate: $expenseDate)
             
             
             ZStack {

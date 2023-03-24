@@ -11,7 +11,7 @@ struct ExpenseDetailsView: View {
     
     
     @Binding var name: String
-    let date: Date
+    @State var date: Date
     @Binding var price: String
     @StateObject var vm: CoreDataViewModel
     let id: String
@@ -20,18 +20,20 @@ struct ExpenseDetailsView: View {
     
     var body: some View {
         VStack {
-            TextField("    Expense Name", text: $name)
+            TextField("Expense Name", text: $name)
                 .frame(height: 50)
                 .background(Color.gray.opacity(0.1))
                 .padding(.bottom)
                 .padding(.horizontal)
-            TextField("     Expense Price", text: $price)
-                .frame(height: 50)
-                .background(Color.gray.opacity(0.1))
-                .padding(.bottom)
-                .padding(.horizontal)
+            
+            
+            TextField("Expense Price", text: $price)
+              .frame(height: 50)
+              .background(Color.gray.opacity(0.1))
+              .padding(.bottom)
+              .padding(.horizontal)
                 
-            CalendarView()
+            CalendarView(selectedDate: $date)
     
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
@@ -40,7 +42,9 @@ struct ExpenseDetailsView: View {
                     .padding(.horizontal)
                     .onTapGesture {
                         dismiss()
-                        vm.updatePurchase(id: id, name: $name.wrappedValue, price: $price.wrappedValue, date: date)
+                        let filteredPrice = removeLetters(from: price)
+                        price = filteredPrice
+                        vm.updatePurchase(id: id, name: $name.wrappedValue, price: filteredPrice, date: date)
                     }
                 
                 Text("Save")
@@ -64,7 +68,14 @@ struct ExpenseDetailsView: View {
     }
 }
 
+func removeLetters(from string: String) -> String {
+    let allowedCharacterSet = CharacterSet(charactersIn: "0123456789.")
+    let filtered = string.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+    return filtered
+}
+
 //struct ExpenseDetailsView_Previews: PreviewProvider {
+//    @Binding var price: String = "100"
 //    static var previews: some View {
 //        NavigationView {
 //            ExpenseDetailsView(name: "Test", date: Date.now, price: "24.99",vm: CoreDataViewModel(),id: UUID().uuidString)

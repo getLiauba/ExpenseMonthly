@@ -16,6 +16,8 @@ struct ExpensesView: View {
     
     var grandientColor = LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
     
+
+    
     
     var body: some View {
         ZStack () {
@@ -63,14 +65,14 @@ struct ExpensesView: View {
 }
 
 struct MiniDate: View {
-    let date = Date.now
+    let date: Date
     let components = Calendar.current.dateComponents([.month,.day], from: Date.now)
     var body: some View {
         VStack {
-            Text(Date.now,format: .dateTime.month())
+            Text(date,format: .dateTime.month())
                 .font(.callout)
                 .foregroundColor(.gray)
-            Text(Date.now,format: .dateTime.day())
+            Text(date,format: .dateTime.day())
                 .font(.headline)
                 .fontWeight(.heavy)
         }
@@ -96,7 +98,7 @@ struct Expense: View {
                         .foregroundColor(.white)
                         .padding(4)
                     HStack {
-                        MiniDate()
+                        MiniDate(date: expenseDate2)
                         Spacer()
                         VStack {
                             Text(expenseName)
@@ -115,7 +117,7 @@ struct Expense: View {
                 }
                 RoundedRectangle(cornerRadius: 1)
                     .frame(width: .infinity,height: 1)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.gray.opacity(0.3))
             }
         }
     }

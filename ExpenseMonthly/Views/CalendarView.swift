@@ -15,7 +15,8 @@ private extension TimeInterval {
 
 struct CalendarView: View {
     private let calendar = Calendar.current
-    @State private var selectedDate: Date = Date()
+    //@State var selectedDate: Date
+    @Binding var selectedDate: Date
     
     let gradient = LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
 
@@ -99,6 +100,7 @@ extension DateFormatter {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        let selectedDate = State<Date>(initialValue: Date())
+        return CalendarView(selectedDate: selectedDate.projectedValue)
     }
 }

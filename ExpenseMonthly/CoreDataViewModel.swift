@@ -15,6 +15,7 @@ class CoreDataViewModel: ObservableObject {
     @Published var savedEntities: [ExpenseEntity] = []
     
     init(){
+       
         container = NSPersistentContainer(name: "PurchasesContainer")
         container.loadPersistentStores { description, error in
             if let error = error {
@@ -23,7 +24,14 @@ class CoreDataViewModel: ObservableObject {
                 print("Successfully loaded core data!")
             }
         }
+        //removeAllExpenses()
         fetchPurchases()
+    }
+    func removeAllExpenses() {
+        for expense in savedEntities {
+            container.viewContext.delete(expense)
+        }
+        saveData()
     }
     
     func fetchPurchases(){

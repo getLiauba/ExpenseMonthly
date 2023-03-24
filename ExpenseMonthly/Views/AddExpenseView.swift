@@ -15,6 +15,7 @@ struct AddExpenseView: View {
     var grandientColor = LinearGradient(gradient: Gradient(colors: [.purple,.pink]), startPoint: .topTrailing, endPoint: .bottomLeading)
     
     @State var amount = ""
+    @State var date = Date()
     
     var body: some View {
         VStack {
@@ -45,7 +46,7 @@ struct AddExpenseView: View {
             NumberPad(amount: $amount)
             
             NavigationLink {
-                AddExpenseNameView(vm: vm, expensePrice: amount, isActive: $isActive)
+                AddExpenseNameView(vm: vm, expensePrice: amount, isActive: $isActive,expenseDate: $date)
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)

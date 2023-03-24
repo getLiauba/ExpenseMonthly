@@ -11,6 +11,10 @@ struct ExpensesDisplayView: View {
     @StateObject var vm = CoreDataViewModel()
     @State var barHeights: [CGFloat] = [20.0, 50.0, 75.0, 120.0, 175.0, 200.0]
     
+    init() {
+        //vm.removeAllExpenses()
+    }
+    
     var body: some View {
         NavigationView{
             
