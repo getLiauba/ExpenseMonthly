@@ -41,10 +41,9 @@ struct ExpenseDetailsView: View {
                     .foregroundColor(.purple)
                     .padding(.horizontal)
                     .onTapGesture {
-                        dismiss()
                         let filteredPrice = removeLetters(from: price)
-                        price = filteredPrice
                         vm.updatePurchase(id: id, name: $name.wrappedValue, price: filteredPrice, date: date)
+                        dismiss() // dismiss the view after saving changes
                     }
                 
                 Text("Save")

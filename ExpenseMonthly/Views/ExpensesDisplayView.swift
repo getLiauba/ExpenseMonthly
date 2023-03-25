@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ExpensesDisplayView: View {
-    @StateObject var vm = CoreDataViewModel()
+    //@StateObject var vm = CoreDataViewModel()
+    @ObservedObject var vm = CoreDataViewModel()
     @State var barHeights: [CGFloat] = [20.0, 50.0, 75.0, 120.0, 175.0, 200.0]
     
     init() {

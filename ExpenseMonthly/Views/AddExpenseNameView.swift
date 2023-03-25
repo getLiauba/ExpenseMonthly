@@ -17,6 +17,15 @@ struct AddExpenseNameView: View {
     @State var expenseName = ""
     @Binding var expenseDate:Date
     
+    
+//    @StateObject var vm:CoreDataViewModel
+//    var expensePrice:String
+//    @State var isActive: Bool
+//
+//    @State var expenseName = ""
+//    @State var expenseDate:Date
+    
+    
     @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
     
@@ -39,13 +48,17 @@ struct AddExpenseNameView: View {
             
             TextField("Expense Name", text: $expenseName)
                 .padding()
+                .background(.gray.opacity(0.2))
+            
+            Spacer()
             
             CalendarView(selectedDate: $expenseDate)
             
+            Spacer()
             
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .frame(width: .infinity,height: 20)
+                    .frame(width: .infinity,height: 55)
                     .foregroundColor(.purple)
                     .padding(.horizontal)
                 
@@ -58,14 +71,12 @@ struct AddExpenseNameView: View {
                 vm.saveData()
                 isActive = false
             }
-        Spacer()
         }
-        
     }
 }
 
 //struct AddExpenseNameView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        AddExpenseNameView(vm: CoreDataViewModel(), expensePrice: "99")
+//        AddExpenseNameView(vm: CoreDataViewModel(), expensePrice: "99", isActive: true, expenseDate: Date())
 //    }
 //}
